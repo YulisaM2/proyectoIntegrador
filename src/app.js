@@ -30,7 +30,7 @@ app.get("/", async (req, res) => {
     console.log(error);
   }
 
-  res.render("index", { jsonArray });
+  res.render("index", { jsonArray: JSON.stringify(jsonArray) });
 });
 
 app.listen(port, () => {
