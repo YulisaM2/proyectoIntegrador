@@ -8,6 +8,7 @@ const publicPath = path.join(__dirname, "../public");
 const csvPath = path.join(__dirname, "../public/directory.csv");
 const templatePath = path.join(__dirname, "../templates");
 const partialsPath = path.join(__dirname, "../templates/partials");
+const Empresa = require("./models/empresa");
 
 const app = express();
 app.use(express.json());
@@ -31,6 +32,17 @@ app.get("/", async (req, res) => {
   }
 
   res.render("index", { jsonArray: JSON.stringify(jsonArray) });
+});
+
+app.get("/empresas", async (_req, res) => {
+  try {
+    const empresas = await Empresa.find();
+
+    res.render("empresas", { empresas });
+  } catch (error) {
+    console.log(error);
+    res.send(`ERROR: ${error}`);
+  }
 });
 
 app.listen(port, () => {
