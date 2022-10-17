@@ -9,6 +9,7 @@ const csvPath = path.join(__dirname, "../public/directory.csv");
 const templatePath = path.join(__dirname, "../templates");
 const partialsPath = path.join(__dirname, "../templates/partials");
 const Empresa = require("./models/empresa");
+const Rubro = require("./models/rubro");
 
 const app = express();
 app.use(express.json());
@@ -39,6 +40,17 @@ app.get("/empresas", async (_req, res) => {
     const empresas = await Empresa.find();
 
     res.render("empresas", { empresas });
+  } catch (error) {
+    console.log(error);
+    res.send(`ERROR: ${error}`);
+  }
+});
+
+app.get("/rubros", async (_req, res) => {
+  try {
+    const rubros = Rubro.find();
+    
+    res.render("rubros", { rubros });
   } catch (error) {
     console.log(error);
     res.send(`ERROR: ${error}`);
