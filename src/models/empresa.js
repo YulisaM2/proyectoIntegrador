@@ -29,13 +29,7 @@ const EMPRESAS_CSV_PATH = path.join(__dirname, "../../public/Recolección de Dat
  * @property {string} descripcion
  * @property {string} tipoDeMiembro
  * @property {string} cantidadDeEmpleados
- * @property {object} localSede
- * @property {string} localSede.nombre
- * @property {string} localSede.email
- * @property {string} localSede.telefono
- * @property {string} localSede.horarioDeApertura
- * @property {string} localSede.horarioDeCierre
- * @property {string} localSede.direccion
+ * @property {Local} localSede
  * @property {Local[]} locales
  * @property {string} presenciaEnPaises
  * @property {Certificacion[]} certificaciones
