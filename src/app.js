@@ -93,3 +93,21 @@ app.get("/servicios", async (_req, res) => {
 app.listen(port, () => {
   console.log("Server is up on 3000");
 });
+
+/* ************** */
+// Para probar la vista de detalle de empresa (empresa.hbs)
+app.get("/empresa/:nombre", async (req, res) => {
+  try {
+    const empresa = await Empresa.find({ nombre: req.params.nombre });
+
+    if (empresa === undefined) {
+      res.status(500).send('ERROR: no se encontró la empresa.');
+      return;
+    }
+
+    res.render("empresa", { empresa });
+  } catch (error) {
+    console.log(error);
+    res.send(`ERROR: ${error}`);
+  }
+});

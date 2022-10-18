@@ -1,0 +1,69 @@
+<html>
+<body>
+    <div style="border: 1px solid black; padding: 10px;">
+        {{#with empresa}}
+            <div style="border: 1px solid black; padding: 10px;">
+                <h2>Nombre: {{nombre}}</h2>
+                <ul>
+                    <li>Timestamp: {{timestamp}}</li>
+                    <li>Descripción: {{descripcion}}</li>
+                    <li>Tipo de Miembro: {{tipoDeMiembro}}</li>
+                    <li>Cantidad de Empleados: {{cantidadDeEmpleados}}</li>
+                    <li>Local Sede:
+                        <div style="border: 1px solid black; padding: 10px;">
+                            {{#with localSede as | ls |}}
+                                <h3>Nombre: {{ls.nombre}}</h3>
+                                <ul>
+                                    <li>Email: {{ls.email}}</li>
+                                    <li>Teléfono: {{ls.telefono}}</li>
+                                    <li>Horario de Apertura: {{ls.horarioDeApertura}}</li>
+                                    <li>Horario de Cierre: {{ls.horarioDeCierre}}</li>
+                                    <li>Dirección: {{ls.direccion}}</li>
+                                </ul>
+                            {{/with}}
+                        </div>
+                    </li>
+                    <li>Locales Alternativos:
+                        <div style="border: 1px solid black; padding: 10px;">
+                            {{#each locales}}
+                                <div style="border: 1px solid black; padding: 10px;">
+                                    <h3>Nombre: {{this.nombre}}</h3>
+                                    <ul>
+                                        <li>Email: {{this.email}}</li>
+                                        <li>Teléfono: {{this.telefono}}</li>
+                                        <li>Horario de Apertura: {{this.horarioDeApertura}}</li>
+                                        <li>Horario de Cierre: {{this.horarioDeCierre}}</li>
+                                        <li>Dirección: {{this.direccion}}</li>
+                                    </ul>
+                                </div>
+                            {{/each}}
+                        </div>
+                    </li>
+                    <li>Presencia en Países: {{presenciaEnPaises}}</li>
+                    <li>Certificaciones:
+                        <div style="border: 1px solid black; padding: 10px;">
+                            {{#each certificaciones}}
+                                <div style="border: 1px solid black; padding: 10px;">
+                                    <h3>Nombre: {{this.nombre}}</h3>
+                                    <ul>
+                                        <li>Fecha de Inicio: {{this.fechaInicio}}</li>
+                                        <li>Fecha de Vencimiento: {{this.fechaVencimiento}}</li>
+                                    </ul>
+                                </div>
+                            {{/each}}
+                        </div>
+                    </li>
+                    <li>Servicios:
+                        <ul>
+                            {{#each servicios}}
+                                <li>{{this}}</li>
+                            {{/each}}
+                        </ul>
+                    </li>
+                    <li>Logo: {{logo}}</li>
+                </ul>
+            </div>
+        {{/with}}
+    </div>
+</body>
+</html>
