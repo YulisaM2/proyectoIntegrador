@@ -129,7 +129,8 @@ class EmpresaModel {
             return undefined;
         }
 
-        if ((filter === 'object') && ('nombre' in filter) && (typeof filter.nombre === 'string')) {
+        if ((typeof filter === 'object') && ('nombre' in filter) && (typeof filter.nombre === 'string')) {
+            console.log('Finding ' + filter.nombre)
             return empresasResult.find(e => e.nombre === filter.nombre);
         }
 
