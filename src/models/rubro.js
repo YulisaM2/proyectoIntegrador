@@ -18,7 +18,7 @@ class RubroModel {
 
         const rubrosYaml = YAML.parse(rubrosYamlString).rubros;
 
-        if (!(filter === 'object') && ('nombre' in filter) && (typeof filter.nombre === 'string')) {
+        if ((filter === 'object') && ('nombre' in filter) && (typeof filter.nombre === 'string')) {
             return rubrosYaml.find(r => r.nombre === filter.nombre);
         }
 
