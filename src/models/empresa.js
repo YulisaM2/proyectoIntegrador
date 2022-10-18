@@ -40,16 +40,19 @@ const EMPRESAS_CSV_PATH = path.join(__dirname, "../../public/Recolección de Dat
 class EmpresaModel {
 
     /**
-     * Buscar todas las empresas.
-     * @returns {Promise.<Empresa[]>} empresas
+     * Buscar empresas.
+     * @param {Object} [filter]
+     * @param {string} [filter.nombre]
+     * @param {string} [filter.servicios]
+     * @returns {Promise.<Empresa[] | undefined>} empresas
      */
-    static async find() {
+    static async find(filter) {
         const empresasCsv = await csv({
                 output: "csv"
             })
             .fromFile(EMPRESAS_CSV_PATH);
 
-        const empresasResult = [];
+        let empresasResult = [];
 
         for (const empresaRow of empresasCsv) {
             const thisEmpresa = {
@@ -122,7 +125,25 @@ class EmpresaModel {
             empresasResult.push(thisEmpresa);
         }
 
-        return empresasResult
+        if (empresasResult.length === 0) {
+            return undefined;
+        }
+
+        if ((filter === 'object') && ('nombre' in filter) && (typeof filter.nombre === 'string')) {
+            return empresasResult.find(e => e.nombre === filter.nombre);
+        }
+
+        if ((typeof filter === 'object') && ('servicios' in filter) && (typeof filter.servicios === 'string')) {
+            const result = empresasResult.filter(e => e.servicios.includes(filter.servicios))
+            
+            if (result.length === 0) {
+                return undefined;
+            }
+
+            return result;
+        }
+
+        return empresasResult;
     }
 }
 

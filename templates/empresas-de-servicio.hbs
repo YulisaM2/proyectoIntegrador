@@ -1,0 +1,72 @@
+<html>
+<body>
+    <h1>Empresas De Servicio "{{ servicio.nombre }}"</h1>
+    <img src="/img/rubros/{{servicio.icono}}">
+
+    <div style="border: 1px solid black; padding: 10px;">
+        {{#each empresas}}
+            <div style="border: 1px solid black; padding: 10px;">
+                <h2>Nombre: {{this.nombre}}</h2>
+                <ul>
+                    <li>Timestamp: {{this.timestamp}}</li>
+                    <li>Descripción: {{this.descripcion}}</li>
+                    <li>Tipo de Miembro: {{this.tipoDeMiembro}}</li>
+                    <li>Cantidad de Empleados: {{this.cantidadDeEmpleados}}</li>
+                    <li>Local Sede:
+                        <div style="border: 1px solid black; padding: 10px;">
+                            {{#with this.localSede}}
+                                <h3>Nombre: {{nombre}}</h3>
+                                <ul>
+                                    <li>Email: {{email}}</li>
+                                    <li>Teléfono: {{telefono}}</li>
+                                    <li>Horario de Apertura: {{horarioDeApertura}}</li>
+                                    <li>Horario de Cierre: {{horarioDeCierre}}</li>
+                                    <li>Dirección: {{direccion}}</li>
+                                </ul>
+                            {{/with}}
+                        </div>
+                    </li>
+                    <li>Locales Alternativos:
+                        <div style="border: 1px solid black; padding: 10px;">
+                            {{#each this.locales}}
+                                <div style="border: 1px solid black; padding: 10px;">
+                                    <h3>Nombre: {{this.nombre}}</h3>
+                                    <ul>
+                                        <li>Email: {{this.email}}</li>
+                                        <li>Teléfono: {{this.telefono}}</li>
+                                        <li>Horario de Apertura: {{this.horarioDeApertura}}</li>
+                                        <li>Horario de Cierre: {{this.horarioDeCierre}}</li>
+                                        <li>Dirección: {{this.direccion}}</li>
+                                    </ul>
+                                </div>
+                            {{/each}}
+                        </div>
+                    </li>
+                    <li>Presencia en Países: {{this.presenciaEnPaises}}</li>
+                    <li>Certificaciones:
+                        <div style="border: 1px solid black; padding: 10px;">
+                            {{#each this.certificaciones}}
+                                <div style="border: 1px solid black; padding: 10px;">
+                                    <h3>Nombre: {{this.nombre}}</h3>
+                                    <ul>
+                                        <li>Fecha de Inicio: {{this.fechaInicio}}</li>
+                                        <li>Fecha de Vencimiento: {{this.fechaVencimiento}}</li>
+                                    </ul>
+                                </div>
+                            {{/each}}
+                        </div>
+                    </li>
+                    <li>Servicios:
+                        <ul>
+                            {{#each this.servicios}}
+                                <li>{{this}}</li>
+                            {{/each}}
+                        </ul>
+                    </li>
+                    <li>Logo: {{this.logo}}</li>
+                </ul>
+            </div>
+        {{/each}}
+    </div>
+</body>
+</html>

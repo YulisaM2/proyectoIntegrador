@@ -35,8 +35,13 @@ app.get("/", async (req, res) => {
   res.render("index", { jsonArray: JSON.stringify(jsonArray) });
 });
 
-app.get("/empresas", async (_req, res) => {
+app.get("/empresas", async (req, res) => {
   try {
+    if ('servicio' in req.query && typeof req.query.servicio === 'string') {
+      await getEmpresasDeServicio(req, res);
+      return;
+    }
+
     const empresas = await Empresa.find();
 
     res.render("empresas", { empresas });
@@ -45,6 +50,24 @@ app.get("/empresas", async (_req, res) => {
     res.send(`ERROR: ${error}`);
   }
 });
+
+const getEmpresasDeServicio = async (req, res) => {
+  const empresas = await Empresa.find({ servicios: req.query.servicio });
+
+  if (empresas === undefined) {
+    res.status(400).send(`ERROR: no se encontraron empresas de servicio '${req.query.servicio}'.`);
+    return;
+  }
+
+  const servicio = Rubro.find({ nombre: req.query.servicio });
+
+  if (servicio === undefined) {
+    res.status(400).send(`ERROR: no se encontraron servicios con nombre '${req.query.servicio}'.`)
+    return;
+  }
+
+  res.render('empresas-de-servicio', { empresas, servicio });
+}
 
 app.get("/rubros", async (_req, res) => {
   try {
