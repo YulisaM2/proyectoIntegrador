@@ -9,7 +9,7 @@ const csvPath = path.join(__dirname, "../public/directory.csv");
 const templatePath = path.join(__dirname, "../templates");
 const partialsPath = path.join(__dirname, "../templates/partials");
 const Empresa = require("./models/empresa");
-const Rubro = require("./models/rubro");
+const Servicio = require("./models/servicio");
 
 const app = express();
 app.use(express.json());
@@ -44,6 +44,11 @@ app.get("/empresas", async (req, res) => {
 
     const empresas = await Empresa.find();
 
+    if (empresas === undefined) {
+      res.status(500).send('ERROR: no se encontraron empresas.');
+      return;
+    }
+
     res.render("empresas", { empresas });
   } catch (error) {
     console.log(error);
@@ -59,7 +64,7 @@ const getEmpresasDeServicio = async (req, res) => {
     return;
   }
 
-  const servicio = Rubro.find({ nombre: req.query.servicio });
+  const servicio = Servicio.find({ nombre: req.query.servicio });
 
   if (servicio === undefined) {
     res.status(400).send(`ERROR: no se encontraron servicios con nombre '${req.query.servicio}'.`)
@@ -69,11 +74,16 @@ const getEmpresasDeServicio = async (req, res) => {
   res.render('empresas-de-servicio', { empresas, servicio });
 }
 
-app.get("/rubros", async (_req, res) => {
+app.get("/servicios", async (_req, res) => {
   try {
-    const rubros = Rubro.find();
+    const servicios = Servicio.find();
+
+    if (servicios === undefined) {
+      res.status(500).send('ERROR: no se encontraron servicios')
+      return;
+    }
     
-    res.render("rubros", { rubros });
+    res.render("servicios", { servicios });
   } catch (error) {
     console.log(error);
     res.send(`ERROR: ${error}`);
