@@ -1,18 +1,19 @@
+<!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css"> 
 </head>
 <body>
     {{>header}}
-<div class="content" id="inicio">
-<h1>Directorio</h1>
-<script>
-    //Parse jsonArray argument
-    const json= `{{{jsonArray}}}`;
-    const list = JSON.parse(json);
-</script>
-<div id="list"></div>
-</div>
-<script src="/index.js"></script> 
+    <div class="content" id="inicio">
+    <h1>Directorio</h1>
+    <script>
+        //Parse jsonArray argument
+        const json= `{{{jsonArray}}}`;
+        const list = JSON.parse(json);
+    </script>
+    <div id="list"></div>
+    </div>
+    <script src="/index.js"></script>
 </body>
 </html>
