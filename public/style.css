@@ -14,7 +14,7 @@ body {
 
 .card {
     border-color: black;
-    border-width: 0.1em;
+    border-width: 0.15em;
 }
 .card-body {
     background-color: #ce5c35;

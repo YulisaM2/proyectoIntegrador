@@ -13,6 +13,7 @@
     </head>
 <body class="empresa-body">
     {{#with empresa}}
+        {{>header}}
         <div class="container">
             <h2 class="mb-4 mt-3 text-center">{{nombre}}</h2>
             <div class="row gx-5 mb-4">
@@ -89,7 +90,8 @@
                     <div class="col-sm-4 mb-4">
                         <div class="card">
                             <div class="card-body">
-                                <h5 class="card-title mb-4">{{ls.nombre}}</h5>
+                                <h5 class="card-title">{{ls.nombre}}</h5>
+                                <hr />
                                 <div class="container">
                                     <div class="row mb-2" style="display: flex; align-items: center">
                                         <div class="col-2">
@@ -132,7 +134,8 @@
                     <div class="col-sm-4 mb-4">
                         <div class="card">
                             <div class="card-body">
-                                <h5 class="card-title mb-4">{{this.nombre}}</h5>
+                                <h5 class="card-title">{{this.nombre}}</h5>
+                                <hr />
                                 <div class="container">
                                     <div class="row mb-2" style="display: flex; align-items: center">
                                         <div class="col-2">
