@@ -1,177 +1,177 @@
-<html>
+<!doctype html>
     <head>
         <!-- Bootstrap CSS -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
         <!-- Bootstrap Font Icon CSS -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+        <!-- Fuente a usar -->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro">
+
         <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
-<body>
-    <div class="container my-4 mx-5">
-        {{#with empresa}}
-            <div class="container">
-                <h2 class="mb-4">{{nombre}}</h2>
-                <div class="row gx-5 mb-4">
-                    <div class="col-sm-6">
-                        <div class="row mt-3 mb-3">
-                            <div class="col-sm-1" style="display: flex; align-items: center">
-                                <i class="bi-card-heading"></i>
-                            </div>
-                            <div class="col-sm-11">
-                                {{tipoDeMiembro}}
-                            </div>
+<body style="font-family: 'Source Sans Pro'; background-color: #55595c; color: #f9f9fa">
+    {{#with empresa}}
+        <div class="container">
+            <h2 class="mb-4 mt-3 text-center">{{nombre}}</h2>
+            <div class="row gx-5 mb-4">
+                <div class="col-sm-5" style="display: flex; align-items: center">
+                    <!--<img src={{logo}} class="img-fluid">-->
+                    <img src="https://i.natgeofe.com/n/548467d8-c5f1-4551-9f58-6817a8d2c45e/NationalGeographic_2572187_3x2.jpg" class="img-fluid">
+                </div>
+                <div class="col-sm-7">
+                    <div class="row mt-3 mb-3">
+                        <div class="col-sm-1" style="display: flex; align-items: center">
+                            <i class="bi-card-heading"></i>
                         </div>
-                        <div class="row mb-3 mb-3">
-                            <div class="col-sm-1" style="display: flex; align-items: center">
-                                <i class="bi-person-fill"></i>
-                            </div>
-                            <div class="col-sm-11">
-                                {{cantidadDeEmpleados}} empleados
-                            </div>
+                        <div class="col-sm-11">
+                            {{tipoDeMiembro}}
                         </div>
-                        <div class="row mb-3 mb-3">
-                            <div class="col-sm-1" style="display: flex; align-items: center">
-                                <i class="bi-geo-alt-fill"></i>
-                            </div>
-                            <div class="col-sm-11">
-                                Presencia en {{presenciaEnPaises}}
-                            </div>
-                        </div>
-                        <div class="row mb-3 mb-3">
-                            <div class="col-sm-1" style="display: flex; align-items: center">
-                                <i class="bi-wrench"></i>
-                            </div>
-                            <div class="col-sm-11">
-                                <div class="row">
-                                    {{#each servicios}}
-                                    <div class="col-sm-auto">{{this}}</div>
-                                    {{/each}}
-                                </div>
-                            </div>
-                        </div>
-                        <!--
-                        <div class="row mb-3 mb-3">
-                            <div class="col-sm-1" style="display: flex; align-items: center">
-                                <i class="bi-blockquote-right"></i>
-                            </div>
-                            <div class="col-sm-11">
-                                Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.
-                            </div>
-                        </div>
-                        -->
                     </div>
-                    <div class="col-sm-6" style="display: flex; align-items: center">
-                        <!--<img src={{logo}} class="img-fluid">-->
-                        <img src="https://i.natgeofe.com/n/548467d8-c5f1-4551-9f58-6817a8d2c45e/NationalGeographic_2572187_3x2.jpg" class="img-fluid">
+                    <div class="row mb-3 mb-3">
+                        <div class="col-sm-1" style="display: flex; align-items: center">
+                            <i class="bi-person-fill"></i>
+                        </div>
+                        <div class="col-sm-11">
+                            {{cantidadDeEmpleados}} empleados
+                        </div>
+                    </div>
+                    <div class="row mb-3 mb-3">
+                        <div class="col-sm-1" style="display: flex; align-items: center">
+                            <i class="bi-geo-alt-fill"></i>
+                        </div>
+                        <div class="col-sm-11">
+                            Presencia en {{presenciaEnPaises}}
+                        </div>
+                    </div>
+                    <div class="row mb-3 mb-3">
+                        <div class="col-sm-1" style="display: flex; align-items: center">
+                            <i class="bi-wrench"></i>
+                        </div>
+                        <div class="col-sm-11">
+                            <div class="row">
+                                {{#each servicios}}
+                                <div class="col-sm-auto">{{this}}</div>
+                                {{/each}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3 mb-3">
+                        <div class="col-sm-1" style="display: flex; align-items: center">
+                            <i class="bi-blockquote-right"></i>
+                        </div>
+                        <div class="col-sm-11">
+                            {{descripcion}}
+                            <!--Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.
+                            -->
+                        </div>
                     </div>
                 </div>
-                <p>{{descripcion}}</p>
-                <h2 class="mt-5 mb-4">Certificaciones</h2>
-                    <div class="row">
-                        {{#each certificaciones}}
-                        <div class="col-sm-2 mb-4">
-                            <div class="card">
-                                <div class="card-body">
-                                    <img src="https://seeklogo.com/images/C/cmmi-logo-E24F71E23E-seeklogo.com.png" class="img-fluid">
-                                    <h5 class="card-title mt-4 mb-4" style="text-align: center">{{this.nombre}}</h5>
-                                    <div style="text-align: center">{{this.fechaInicio}} <br> - <br> {{this.fechaVencimiento}}</div>
-                                </div>
-                            </div>
-                        </div>
-                        {{/each}}
-                    </div>
-                <h2 class="mt-5 mb-4">Locales</h2>
-                    <div class="row">
-                        {{#with localSede as | ls |}}
-                        <div class="col-sm-4 mb-4">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h5 class="card-title mb-4">{{ls.nombre}}</h5>
-                                    <div class="container">
-                                        <div class="row mb-2" style="display: flex; align-items: center">
-                                            <div class="col-2">
-                                                <i class="bi-envelope-fill"></i>
-                                            </div>
-                                            <div class="col">
-                                            {{ls.email}}
-                                            </div>
-                                        </div>
-                                        <div class="row mb-2" style="display: flex; align-items: center">
-                                            <div class="col-2">
-                                                <i class="bi-telephone-fill"></i>
-                                            </div>
-                                            <div class="col">
-                                            {{ls.telefono}}
-                                            </div>
-                                        </div>
-                                        <div class="row mb-2" style="display: flex; align-items: center">
-                                            <div class="col-2">
-                                                <i class="bi-clock-fill"></i>
-                                            </div>
-                                            <div class="col">
-                                            <span>De {{ls.horarioDeApertura}} a {{ls.horarioDeCierre}}</span>
-                                            </div>
-                                        </div>
-                                        <div class="row mb-1" style="display: flex; align-items: center">
-                                            <div class="col-2">
-                                                <i class="bi-pin-map-fill"></i>
-                                            </div>
-                                            <div class="col">
-                                            {{ls.direccion}}
-                                            </div>
-                                        </div>                                                                                                                        
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        {{/with}}
-                        {{#each locales}}
-                        <div class="col-sm-4 mb-4">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h5 class="card-title mb-4">{{this.nombre}}</h5>
-                                    <div class="container">
-                                        <div class="row mb-2" style="display: flex; align-items: center">
-                                            <div class="col-2">
-                                                <i class="bi-envelope-fill"></i>
-                                            </div>
-                                            <div class="col">
-                                            {{this.email}}
-                                            </div>
-                                        </div>
-                                        <div class="row mb-2" style="display: flex; align-items: center">
-                                            <div class="col-2">
-                                                <i class="bi-telephone-fill"></i>
-                                            </div>
-                                            <div class="col">
-                                            {{this.telefono}}
-                                            </div>
-                                        </div>
-                                        <div class="row mb-2" style="display: flex; align-items: center">
-                                            <div class="col-2">
-                                                <i class="bi-clock-fill"></i>
-                                            </div>
-                                            <div class="col">
-                                            <span>De {{this.horarioDeApertura}} a {{this.horarioDeCierre}}</span>
-                                            </div>
-                                        </div>
-                                        <div class="row mb-1" style="display: flex; align-items: center">
-                                            <div class="col-2">
-                                                <i class="bi-pin-map-fill"></i>
-                                            </div>
-                                            <div class="col">
-                                            {{this.direccion}}
-                                            </div>
-                                        </div>                                                                                                                        
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        {{/each}}
-                    </div>
             </div>
-        {{/with}}
-    </div>
+            <h2 class="mt-5 mb-4 text-center">Certificaciones</h2>
+                <div class="row">
+                    {{#each certificaciones}}
+                    <div class="col-sm-2 mb-4">
+                        <div class="card bg-secondary">
+                            <div class="card-body">
+                                <img src="https://seeklogo.com/images/C/cmmi-logo-E24F71E23E-seeklogo.com.png" class="img-fluid">
+                                <h5 class="card-title mt-4 mb-4" style="text-align: center">{{this.nombre}}</h5>
+                                <div style="text-align: center">{{this.fechaInicio}} <br> - <br> {{this.fechaVencimiento}}</div>
+                            </div>
+                        </div>
+                    </div>
+                    {{/each}}
+                </div>
+            <h2 class="mt-5 mb-4 text-center">Locales</h2>
+                <div class="row">
+                    {{#with localSede as | ls |}}
+                    <div class="col-sm-4 mb-4">
+                        <div class="card bg-secondary">
+                            <div class="card-body">
+                                <h5 class="card-title mb-4">{{ls.nombre}}</h5>
+                                <div class="container">
+                                    <div class="row mb-2" style="display: flex; align-items: center">
+                                        <div class="col-2">
+                                            <i class="bi-envelope-fill"></i>
+                                        </div>
+                                        <div class="col">
+                                        {{ls.email}}
+                                        </div>
+                                    </div>
+                                    <div class="row mb-2" style="display: flex; align-items: center">
+                                        <div class="col-2">
+                                            <i class="bi-telephone-fill"></i>
+                                        </div>
+                                        <div class="col">
+                                        {{ls.telefono}}
+                                        </div>
+                                    </div>
+                                    <div class="row mb-2" style="display: flex; align-items: center">
+                                        <div class="col-2">
+                                            <i class="bi-clock-fill"></i>
+                                        </div>
+                                        <div class="col">
+                                        <span>De {{ls.horarioDeApertura}} a {{ls.horarioDeCierre}}</span>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-1" style="display: flex; align-items: center">
+                                        <div class="col-2">
+                                            <i class="bi-pin-map-fill"></i>
+                                        </div>
+                                        <div class="col">
+                                        {{ls.direccion}}
+                                        </div>
+                                    </div>                                                                                                                        
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {{/with}}
+                    {{#each locales}}
+                    <div class="col-sm-4 mb-4">
+                        <div class="card bg-secondary">
+                            <div class="card-body">
+                                <h5 class="card-title mb-4">{{this.nombre}}</h5>
+                                <div class="container">
+                                    <div class="row mb-2" style="display: flex; align-items: center">
+                                        <div class="col-2">
+                                            <i class="bi-envelope-fill"></i>
+                                        </div>
+                                        <div class="col">
+                                        {{this.email}}
+                                        </div>
+                                    </div>
+                                    <div class="row mb-2" style="display: flex; align-items: center">
+                                        <div class="col-2">
+                                            <i class="bi-telephone-fill"></i>
+                                        </div>
+                                        <div class="col">
+                                        {{this.telefono}}
+                                        </div>
+                                    </div>
+                                    <div class="row mb-2" style="display: flex; align-items: center">
+                                        <div class="col-2">
+                                            <i class="bi-clock-fill"></i>
+                                        </div>
+                                        <div class="col">
+                                        <span>De {{this.horarioDeApertura}} a {{this.horarioDeCierre}}</span>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-1" style="display: flex; align-items: center">
+                                        <div class="col-2">
+                                            <i class="bi-pin-map-fill"></i>
+                                        </div>
+                                        <div class="col">
+                                        {{this.direccion}}
+                                        </div>
+                                    </div>                                                                                                                        
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {{/each}}
+                </div>
+        </div>
+    {{/with}}
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 </body>
 </html>
