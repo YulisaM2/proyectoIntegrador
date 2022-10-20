@@ -7,9 +7,11 @@
         <!-- Fuente a usar -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro">
 
+        <link rel="stylesheet" href="/style.css"> 
+
         <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
-<body style="font-family: 'Source Sans Pro'; background-color: #55595c; color: #f9f9fa">
+<body class="empresa-body">
     {{#with empresa}}
         <div class="container">
             <h2 class="mb-4 mt-3 text-center">{{nombre}}</h2>
@@ -71,10 +73,10 @@
                 <div class="row">
                     {{#each certificaciones}}
                     <div class="col-sm-2 mb-4">
-                        <div class="card bg-secondary">
+                        <div class="card">
+                            <img src="https://seeklogo.com/images/C/cmmi-logo-E24F71E23E-seeklogo.com.png" class="img-fluid card-img-top p-3">
                             <div class="card-body">
-                                <img src="https://seeklogo.com/images/C/cmmi-logo-E24F71E23E-seeklogo.com.png" class="img-fluid">
-                                <h5 class="card-title mt-4 mb-4" style="text-align: center">{{this.nombre}}</h5>
+                                <h5 class="card-title mt-1 mb-4" style="text-align: center">{{this.nombre}}</h5>
                                 <div style="text-align: center">{{this.fechaInicio}} <br> - <br> {{this.fechaVencimiento}}</div>
                             </div>
                         </div>
@@ -85,7 +87,7 @@
                 <div class="row">
                     {{#with localSede as | ls |}}
                     <div class="col-sm-4 mb-4">
-                        <div class="card bg-secondary">
+                        <div class="card">
                             <div class="card-body">
                                 <h5 class="card-title mb-4">{{ls.nombre}}</h5>
                                 <div class="container">
@@ -128,7 +130,7 @@
                     {{/with}}
                     {{#each locales}}
                     <div class="col-sm-4 mb-4">
-                        <div class="card bg-secondary">
+                        <div class="card">
                             <div class="card-body">
                                 <h5 class="card-title mb-4">{{this.nombre}}</h5>
                                 <div class="container">
