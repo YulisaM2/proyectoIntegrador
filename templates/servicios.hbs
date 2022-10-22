@@ -1,14 +1,28 @@
 <html>
+<head>
+<link rel="stylesheet" href="style.css">
+</head>
 <body>
-    <h1>Servicios</h1>
+    <div class="content" id="inicio"></div>
+    {{>header}}
+    
+    <h1 >Servicios</h1>
 
     <div>
         {{#each servicios}}
-            <div style="border: 1px solid black; padding: 10px;">
-                <h2>Nombre: {{this.nombre}}</h2>
-                <img src="/img/servicios/{{this.icono}}">
+        <div class="container-md">
+            <div class="row">
+                <div style="border: 1px solid black; padding: 10px;">
+                    <h2>{{this.nombre}}</h2>
+                    <a href="#inicio">
+                        <img class="img-thumbnail" src="/img/servicios/{{this.icono}}">
+                    </a>        
+                </div>
             </div>
+            <br/>
+        </div>
         {{/each}}
+ 
     </div>
 </body>
 </html>
