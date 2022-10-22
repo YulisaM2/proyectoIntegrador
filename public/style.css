@@ -5,3 +5,17 @@ body {
 .content {
     margin: 10px;
 }
+
+.empresa-body {
+    font-family: 'Source Sans Pro'; 
+    background-color: #55595c; 
+    color: #f9f9fa
+}
+
+.card {
+    border-color: black;
+    border-width: 0.15em;
+}
+.card-body {
+    background-color: #ce5c35;
+}
