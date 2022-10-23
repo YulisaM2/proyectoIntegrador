@@ -1,72 +1,46 @@
-<html>
-<body>
-    <h1>Empresas De Servicio "{{ servicio.nombre }}"</h1>
-    <img src="/img/servicios/{{servicio.icono}}">
+<!doctype html>
+    <head>
+        <!-- Bootstrap CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+        <!-- Bootstrap Font Icon CSS -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+        <!-- Fuente a usar -->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro">
 
-    <div style="border: 1px solid black; padding: 10px;">
-        {{#each empresas}}
-            <div style="border: 1px solid black; padding: 10px;">
-                <h2>Nombre: {{this.nombre}}</h2>
-                <ul>
-                    <li>Timestamp: {{this.timestamp}}</li>
-                    <li>Descripción: {{this.descripcion}}</li>
-                    <li>Tipo de Miembro: {{this.tipoDeMiembro}}</li>
-                    <li>Cantidad de Empleados: {{this.cantidadDeEmpleados}}</li>
-                    <li>Local Sede:
-                        <div style="border: 1px solid black; padding: 10px;">
-                            {{#with this.localSede}}
-                                <h3>Nombre: {{nombre}}</h3>
-                                <ul>
-                                    <li>Email: {{email}}</li>
-                                    <li>Teléfono: {{telefono}}</li>
-                                    <li>Horario de Apertura: {{horarioDeApertura}}</li>
-                                    <li>Horario de Cierre: {{horarioDeCierre}}</li>
-                                    <li>Dirección: {{direccion}}</li>
-                                </ul>
-                            {{/with}}
-                        </div>
-                    </li>
-                    <li>Locales Alternativos:
-                        <div style="border: 1px solid black; padding: 10px;">
-                            {{#each this.locales}}
-                                <div style="border: 1px solid black; padding: 10px;">
-                                    <h3>Nombre: {{this.nombre}}</h3>
-                                    <ul>
-                                        <li>Email: {{this.email}}</li>
-                                        <li>Teléfono: {{this.telefono}}</li>
-                                        <li>Horario de Apertura: {{this.horarioDeApertura}}</li>
-                                        <li>Horario de Cierre: {{this.horarioDeCierre}}</li>
-                                        <li>Dirección: {{this.direccion}}</li>
-                                    </ul>
-                                </div>
-                            {{/each}}
-                        </div>
-                    </li>
-                    <li>Presencia en Países: {{this.presenciaEnPaises}}</li>
-                    <li>Certificaciones:
-                        <div style="border: 1px solid black; padding: 10px;">
-                            {{#each this.certificaciones}}
-                                <div style="border: 1px solid black; padding: 10px;">
-                                    <h3>Nombre: {{this.nombre}}</h3>
-                                    <ul>
-                                        <li>Fecha de Inicio: {{this.fechaInicio}}</li>
-                                        <li>Fecha de Vencimiento: {{this.fechaVencimiento}}</li>
-                                    </ul>
-                                </div>
-                            {{/each}}
-                        </div>
-                    </li>
-                    <li>Servicios:
-                        <ul>
-                            {{#each this.servicios}}
-                                <li>{{this}}</li>
-                            {{/each}}
-                        </ul>
-                    </li>
-                    <li>Logo: {{this.logo}}</li>
-                </ul>
+        <link rel="stylesheet" href="/style.css"> 
+
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+{{!-- <body class="rubro-selec-body"> --}}
+    <body class="empresa-body">
+        {{>header}}
+        <div class="container">
+            <h1>Empresas De Servicio "{{ servicio.nombre }}"</h1>
+
+            <div class="d-flex bd-highlight mb-3">
+                <nav class="nav flex-column servicios-sidebar" style="border: solid; border">
+                    {{#each servicios}}
+                     <a class="nav-link mb-3" style="color: gray; border-bottom: solid; border-color: white" href="/empresas?servicio={{this.nombre}}">{{this.nombre}}</a>
+                    {{/each}}
+                </nav>
             </div>
-        {{/each}}
-    </div>
-</body>
+        
+                {{#each empresas}}
+                    <div class="col-sm-6 bd-highlight">
+                        <img src="/img/servicios/{{servicio.icono}}">
+                        <h2>{{this.nombre}}</h2>
+                    </div>
+                {{/each}}
+                <div class="col-sm-6 bd-highlight">
+                        <img src="/img/servicios/{{servicio.icono}}">
+                        <h2>otra</h2>
+                </div>
+                <div class="col-sm-6 bd-highlight">
+                        <img src="/img/servicios/{{servicio.icono}}">
+                        <h2>otra</h2>
+                </div>
+            
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+    </body>
 </html>
