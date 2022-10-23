@@ -1,55 +1,55 @@
 servicios:
 - nombre: Desarrollo de Software
-  icono : placeholder.svg
+  icono : software-development-icon.svg
 - nombre: Desarrollo Web
-  icono : placeholder.svg
+  icono : web-page-icon.svg
 - nombre: Soluciones Tecnológicas
-  icono : placeholder.svg
+  icono : creative-idea-solution-icon.svg
 - nombre: Healthtech
-  icono : placeholder.svg
+  icono : health-and-safety-icon.svg
 - nombre: Fintech
-  icono : placeholder.svg
+  icono : fintech-icon.svg
 - nombre: E-commerce
-  icono : placeholder.svg
+  icono : e-commerce-shopping-website-icon.svg
 - nombre: Desarrollo a la medida
-  icono : placeholder.svg
+  icono : setting-computer-desktop-icon.svg
 - nombre: Facturación electrónica
-  icono : placeholder.svg
+  icono : checkmark-invoice-icon.svg
 - nombre: Staffing
-  icono : placeholder.svg
+  icono : corporate-icon.svg
 - nombre: Software as a Service
-  icono : placeholder.svg
+  icono : saas-icon.svg
 - nombre: Monitoreo de SW & HW
-  icono : placeholder.svg
+  icono : monitoring-system-icon.svg
 - nombre: Consultoría TIC
-  icono : placeholder.svg
+  icono : comments-icon.svg
 - nombre: Asesoría en propiedad intelectual en temas de tecnología
-  icono : placeholder.svg
+  icono : copyright-content-icon.svg
 - nombre: Tratamiento de imagen
-  icono : placeholder.svg
+  icono : add-image-photo-icon.svg
 - nombre: Servicios de telecomunicaciones
-  icono : placeholder.svg
+  icono : base-station-icon.svg
 - nombre: Uso de PLC
-  icono : placeholder.svg
+  icono : tools-icon.svg
 - nombre: Redes industriales
-  icono : placeholder.svg
+  icono : share-square-line-icon.svg
 - nombre: Realidad aumentada
-  icono : placeholder.svg
+  icono : virtual-world-icon.svg
 - nombre: 3D Printing
-  icono : placeholder.svg
+  icono : 3d-printing-icon.svg
 - nombre: Business Intelligence
-  icono : placeholder.svg
+  icono : business-man-investor-dollar-icon.svg
 - nombre: Big data y Analítica de datos
-  icono : placeholder.svg
+  icono : data-sheet-icon.svg
 - nombre: Inteligencia artificial
-  icono : placeholder.svg
+  icono : artificial-intelligence-ai-icon.svg
 - nombre: Robótica
-  icono : placeholder.svg
+  icono : mechanical-arm-icon.svg
 - nombre: IoT
-  icono : placeholder.svg
+  icono : smart-city-icon.svg
 - nombre: Ciberseguridad
-  icono : placeholder.svg
+  icono : encrypted-icon.svg
 - nombre: Blockchain
-  icono : placeholder.svg
+  icono : blockchain-development-icon.svg
 - nombre: Nube
-  icono : placeholder.svg
+  icono : cloud-backup-icon.svg
