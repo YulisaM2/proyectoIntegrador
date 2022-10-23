@@ -71,7 +71,16 @@ const getEmpresasDeServicio = async (req, res) => {
     return;
   }
 
-  res.render('empresas-de-servicio', { empresas, servicio });
+  var servicios = Servicio.find();
+  servicios.sort(function(a, b) {
+    var servicioA = a.nombre.toUpperCase();
+    var servicioB = b.nombre.toUpperCase();
+    return (servicioA < servicioB) ? -1 : (servicioA > servicioB) ? 1 : 0;
+  });
+
+  console.log(servicios)
+
+  res.render('empresas-de-servicio', { empresas, servicio, servicios});
 }
 
 app.get("/servicios", async (_req, res) => {
