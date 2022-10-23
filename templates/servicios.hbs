@@ -11,7 +11,7 @@
 
         <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
-<body>
+<body class="empresa-body">
     <div class="content" id="inicio"></div>
     {{>header}}
     
@@ -19,14 +19,14 @@
 
     <div>
         {{#each servicios}}
-        <div class="container-md">
-            <div class="row">
-                <div style="border: 1px solid black; padding: 10px;">
+        <div class="container-sm" >
+            <div class="row" style="border: 1px solid black; padding: 10px;">
+                <div class="column" >
                     <a href="#inicio">
                         <img class="img-thumbnail" style="display: block; margin-left: auto; margin-right: auto;"  width="250px" height="250px" src="/img/servicios/{{this.icono}}">
-                    </a>      
+                    </a>
+                    <br/>      
                     <h2 style="text-align:center">{{this.nombre}}</h2>
-                      
                 </div>
             </div>
             <br/>
