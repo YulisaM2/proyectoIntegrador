@@ -1,46 +1,96 @@
 <!doctype html>
-    <head>
-        <!-- Bootstrap CSS -->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-        <!-- Bootstrap Font Icon CSS -->
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
-        <!-- Fuente a usar -->
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro">
 
-        <link rel="stylesheet" href="/style.css"> 
+<head>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+  <!-- Bootstrap Font Icon CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+  <!-- Fuente a usar -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro">
 
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-    </head>
-{{!-- <body class="rubro-selec-body"> --}}
-    <body class="empresa-body">
-        {{>header}}
-        <div class="container">
-            <h1>Empresas De Servicio "{{ servicio.nombre }}"</h1>
+  <link rel="stylesheet" href="/style.css">
 
-            <div class="d-flex bd-highlight mb-3">
-                <nav class="nav flex-column servicios-sidebar" style="border: solid; border">
-                    {{#each servicios}}
-                     <a class="nav-link mb-3" style="color: gray; border-bottom: solid; border-color: white" href="/empresas?servicio={{this.nombre}}">{{this.nombre}}</a>
-                    {{/each}}
-                </nav>
-            </div>
-        
-                {{#each empresas}}
-                    <div class="col-sm-6 bd-highlight">
-                        <img src="/img/servicios/{{servicio.icono}}">
-                        <h2>{{this.nombre}}</h2>
-                    </div>
-                {{/each}}
-                <div class="col-sm-6 bd-highlight">
-                        <img src="/img/servicios/{{servicio.icono}}">
-                        <h2>otra</h2>
-                </div>
-                <div class="col-sm-6 bd-highlight">
-                        <img src="/img/servicios/{{servicio.icono}}">
-                        <h2>otra</h2>
-                </div>
-            
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body class="empresa-body">
+  {{>header}}
+  <div class="container">
+    <h1>Empresas De Servicio "{{ servicio.nombre }}"</h1>
+
+    <div class="row">
+      <div class="col-12 col-md-3">
+        <h2 class="text-center">Servicios</h2>
+      </div>
+      <div class="col-12 col-md-9">
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" placeholder="Buscar" aria-label="Buscar" aria-describedby="button-buscar">
+          <button class="btn btn-outline-secondary" type="button" id="button-buscar">Buscar</button>
         </div>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
-    </body>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12 col-sm-6 col-md-3 mb-3">
+        <div class="border">
+          {{#each servicios}}
+          <a class="d-block border-bottom border-white text-secondary text-decoration-none p-1"
+            href="/empresas?servicio={{this.nombre}}">{{this.nombre}}</a>
+          {{/each}}
+        </div>
+      </div>
+
+      <div class="col-12 col-sm-6 col-md-9">
+        <div class="row text-center">
+          {{#each empresas}}
+            <div class="col-12 col-md-6">
+              <div class="p-2 border">
+                <img src="/img/empresas/{{this.logo}}" class="img-fluid" style="max-height: 300px">
+                <h2>{{this.nombre}}</h2>
+              </div>
+            </div>
+          {{/each}}
+          <div class="col-12 col-md-6">
+            <div class="p-2 border">
+              <img src="/img/servicios/placeholder.svg" class="img-fluid" style="max-height: 300px">
+              <h2>otra</h2>
+            </div>
+          </div>
+          <div class="col-12 col-md-6">
+            <div class="p-2 border">
+              <img src="/img/servicios/placeholder.svg" class="img-fluid" style="max-height: 300px">
+              <h2>otra</h2>
+            </div>
+          </div>
+          <div class="col-12 col-md-6">
+            <div class="p-2 border">
+              <img src="/img/servicios/placeholder.svg" class="img-fluid" style="max-height: 300px">
+              <h2>otra</h2>
+            </div>
+          </div>
+          <div class="col-12 col-md-6">
+            <div class="p-2 border">
+              <img src="/img/servicios/placeholder.svg" class="img-fluid" style="max-height: 300px">
+              <h2>otra</h2>
+            </div>
+          </div>
+          <div class="col-12 col-md-6">
+            <div class="p-2 border">
+              <img src="/img/servicios/placeholder.svg" class="img-fluid">
+              <h2>otra</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+    integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+    crossorigin="anonymous"></script>
+</body>
+
 </html>
