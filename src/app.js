@@ -20,21 +20,24 @@ app.set("views", templatePath);
 
 app.use(express.static(publicPath));
 hbs.registerPartials(partialsPath);
+hbs.registerHelper('isEqualString', (arg1, arg2) => {
+  return arg1 === arg2
+});
 
-app.get("/", async (req, res) => {
-  let jsonArray = [];
+app.get("/", async (_req, res) => {
   try {
-    jsonArray = await csv().fromFile(csvPath);
-    jsonArray.map((res) => {
-      //Esto es para las respuestas de checklist
-      res.Checklist = res.Checklist.split(";");
-    });
-    console.log(jsonArray);
+    const servicios = Servicio.find();
+
+    if (servicios === undefined) {
+      res.status(500).send('ERROR: no se encontraron servicios')
+      return;
+    }
+    
+    res.render("servicios", { servicios, activePage: "Servicios" });
   } catch (error) {
     console.log(error);
+    res.send(`ERROR: ${error}`);
   }
-
-  res.render("index", { jsonArray: JSON.stringify(jsonArray) });
 });
 
 app.get("/empresas", async (req, res) => {
@@ -108,22 +111,6 @@ const getEmpresasDeServicio = async (req, res) => {
 
   res.render('empresas-de-servicio', { empresas, servicio, servicios});
 }
-
-app.get("/servicios", async (_req, res) => {
-  try {
-    const servicios = Servicio.find();
-
-    if (servicios === undefined) {
-      res.status(500).send('ERROR: no se encontraron servicios')
-      return;
-    }
-    
-    res.render("servicios", { servicios });
-  } catch (error) {
-    console.log(error);
-    res.send(`ERROR: ${error}`);
-  }
-});
 
 app.listen(port, () => {
   console.log("Server is up on 3000");
