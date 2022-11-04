@@ -18,6 +18,9 @@ app.set("views", templatePath);
 
 app.use(express.static(publicPath));
 hbs.registerPartials(partialsPath);
+hbs.registerHelper('isEqualString', (arg1, arg2) => {
+  return arg1 === arg2
+});
 
 app.get("/", async (_req, res) => {
   try {
@@ -28,7 +31,7 @@ app.get("/", async (_req, res) => {
       return;
     }
     
-    res.render("servicios", { servicios });
+    res.render("servicios", { servicios, activePage: "Servicios" });
   } catch (error) {
     console.log(error);
     res.send(`ERROR: ${error}`);

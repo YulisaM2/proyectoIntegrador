@@ -1,11 +1,24 @@
-<div class="header" style="background-color: #07071c;">
+<div class="header py-1">
   <div class="container">
-    <div class="row">
-      <div class="col">
-        <div class="scrollmenu">
-          <a href="/">Inicio</a>
-          <a href="https://csoftmty.org/" target="_blank">CSoftMty</a>
-        </div>
+    <div class="d-flex">
+      <div class="p-3">
+        <a href="/" class="d-inline-block">
+          <img class="w-100" src="https://csoftmty.org/wp-content/uploads/elementor/thumbs/csoftmty_logo-prmlnc2wtwfq0qz7g47a34tis9oq0g5nh37l67ugw0.png">
+        </a>
+      </div>
+      <div class="p-3 w-100">
+        <ul class="d-flex justify-content-end list-unstyled m-0">
+          <li class="d-block position-relative me-5">
+            {{#if (isEqualString activePage "Servicios")}}
+              <a class="header-link-active p-2 text-white d-inline-block text-decoration-none" href="/" style="font-family: Roboto; font-weight: 300;">Servicios</a>
+            {{else}}
+              <a class="header-link p-2 text-white d-inline-block text-decoration-none" href="/" style="font-family: Roboto; font-weight: 300;">Servicios</a>
+            {{/if}}
+          </li>
+          <li class="d-block position-relative">
+            <a class="header-link p-2 text-white d-inline-block text-decoration-none" href="https://csoftmty.org/" target="_blank" style="font-family: Roboto; font-weight: 300;">csoftmty.org<span class="py-2 ps-2"><i class="fa-solid fa-arrow-up-right-from-square"></i></span></a>
+          </li>
+        </ul>
       </div>
     </div>
   </div>
