@@ -73,8 +73,6 @@ const getEmpresasDeNombre = async (req, res) => {
     return;
   }
 
-  console.info(empresas)
-
   var servicios = Servicio.find();
   servicios.sort(function(a, b) {
     var servicioA = a.nombre.toUpperCase();
