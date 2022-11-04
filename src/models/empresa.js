@@ -1,9 +1,8 @@
-const { readFileSync } = require("fs");
 const path = require("path");
 
 const csv = require("csvtojson");
 
-const EMPRESAS_CSV_PATH = path.join(__dirname, "../../public/Recolección de Datos para Catálogo de Miembros del CSoftMty (Responses) - Form Responses 1.csv")
+const EMPRESAS_CSV_PATH = path.join(__dirname, "../../public/Recolección de Datos para Catálogo de Miembros del CSoftMty (New Responses) - Form Responses 2.csv")
 
 /**
  * @typedef {object} Local
@@ -26,6 +25,7 @@ const EMPRESAS_CSV_PATH = path.join(__dirname, "../../public/Recolección de Dat
  * @typedef {object} Empresa
  * @property {string} timestamp
  * @property {string} nombre
+ * @property {string} sitioWeb
  * @property {string} descripcion
  * @property {string} tipoDeMiembro
  * @property {string} cantidadDeEmpleados
@@ -48,8 +48,8 @@ class EmpresaModel {
      */
     static async find(filter) {
         const empresasCsv = await csv({
-                output: "csv"
-            })
+            output: "csv",
+        })
             .fromFile(EMPRESAS_CSV_PATH);
 
         let empresasResult = [];
@@ -58,27 +58,32 @@ class EmpresaModel {
             const thisEmpresa = {
                 timestamp: empresaRow[0],
                 nombre: empresaRow[1],
-                descripcion: empresaRow[2],
-                tipoDeMiembro: empresaRow[3],
-                cantidadDeEmpleados: empresaRow[4],
+                sitioWeb: empresaRow[2],
+                logo: empresaRow[3],
+                descripcion: empresaRow[4],
+                tipoDeMiembro: empresaRow[5],
+                cantidadDeEmpleados: empresaRow[6],
                 localSede: {
-                    nombre: empresaRow[5],
-                    email: empresaRow[6],
-                    telefono: empresaRow[7],
-                    horarioDeApertura: empresaRow[8],
-                    horarioDeCierre: empresaRow[9],
-                    direccion: empresaRow[10],
+                    nombre: empresaRow[7],
+                    email: empresaRow[8],
+                    telefono: empresaRow[9],
+                    horarioDeApertura: empresaRow[10],
+                    horarioDeCierre: empresaRow[11],
+                    direccion: empresaRow[12],
                 },
             };
 
-            let localIndex = 2;
+            let localIndex = 1;
 
-            while (localIndex <= 5 && empresaRow[11 + (localIndex - 2) * 7] === "Sí") {
-                if (localIndex === 2) {
-                    thisEmpresa["locales"] = [];
+            const NUM_FIELDS_IN_LOCAL = 6;
+            const MAX_LOCALES = 10;
+
+            while (empresaRow[13 + (localIndex - 1) * (NUM_FIELDS_IN_LOCAL + 1)] === "Sí" && localIndex < MAX_LOCALES) {
+                if (localIndex === 1) {
+                    thisEmpresa.locales = [];
                 }
 
-                const thisLocalStartIndex = 11 + (localIndex - 2) * 7 + 1;
+                const thisLocalStartIndex = 14 + (localIndex - 1) * (NUM_FIELDS_IN_LOCAL + 1);
 
                 thisEmpresa.locales.push({
                     nombre: empresaRow[thisLocalStartIndex],
@@ -92,21 +97,22 @@ class EmpresaModel {
                 localIndex++;
             };
 
-            thisEmpresa.presenciaEnPaises = empresaRow[39];
+            thisEmpresa.presenciaEnPaises = empresaRow[76];
 
-            if (empresaRow[40] === "Sí") {
-                thisEmpresa["certificaciones"] = [];
+            if (empresaRow[77] === "Sí") {
+                thisEmpresa.certificaciones = [{
+                    nombre: empresaRow[78],
+                    fechaInicio: empresaRow[79],
+                    fechaVencimiento: empresaRow[80],
+                }];
 
-                thisEmpresa.certificaciones.push({
-                    nombre: empresaRow[41],
-                    fechaInicio: empresaRow[42],
-                    fechaVencimiento: empresaRow[43],
-                })
+                let certificacionIndex = 1;
 
-                let certificacionIndex = 2;
+                const NUM_FIELDS_IN_CERTIFICACION = 3;
+                const MAX_CERTIFICACIONES = 20;
 
-                while (certificacionIndex <= 10 && thisEmpresa[44 + (certificacionIndex - 2) * 4] === "Sí") {
-                    const thisCertificacionStartIndex = 44 + (certificacionIndex - 2) * 4 + 1;
+                while (empresaRow[81 + (certificacionIndex - 1) * (NUM_FIELDS_IN_CERTIFICACION + 1)] === "Sí" && certificacionIndex < MAX_CERTIFICACIONES) {
+                    const thisCertificacionStartIndex = 82 + (certificacionIndex - 1) * (NUM_FIELDS_IN_CERTIFICACION + 1);
 
                     thisEmpresa.certificaciones.push({
                         nombre: empresaRow[thisCertificacionStartIndex],
@@ -118,9 +124,7 @@ class EmpresaModel {
                 };
             };
 
-            thisEmpresa["servicios"] = empresaRow[80].split(", ");
-
-            thisEmpresa["logo"] = empresaRow[81];
+            thisEmpresa["servicios"] = empresaRow[157].split(", ");
 
             empresasResult.push(thisEmpresa);
         }
@@ -135,7 +139,7 @@ class EmpresaModel {
 
         if ((typeof filter === 'object') && ('servicios' in filter) && (typeof filter.servicios === 'string')) {
             const result = empresasResult.filter(e => e.servicios.includes(filter.servicios))
-            
+
             if (result.length === 0) {
                 return undefined;
             }
