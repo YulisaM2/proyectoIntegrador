@@ -133,8 +133,19 @@ class EmpresaModel {
             return undefined;
         }
 
+        if ((typeof filter === 'object') && ('detalle' in filter) && (typeof filter.detalle === 'string')) {
+            return empresasResult.find(e => e.nombre === filter.detalle);
+        }
+
         if ((typeof filter === 'object') && ('nombre' in filter) && (typeof filter.nombre === 'string')) {
-            return empresasResult.find(e => e.nombre === filter.nombre);
+            // const result = empresasResult.filter(e => e.nombre === filter.nombre);
+            const regex = new RegExp(filter.nombre, 'gi');
+            const result = empresasResult.filter(e => regex.test(e.nombre));
+
+            if (result.length === 0) {
+                return undefined;
+            }
+            return result;
         }
 
         if ((typeof filter === 'object') && ('servicios' in filter) && (typeof filter.servicios === 'string')) {
