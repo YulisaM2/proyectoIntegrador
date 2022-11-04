@@ -10,6 +10,8 @@ const templatePath = path.join(__dirname, "../templates");
 const partialsPath = path.join(__dirname, "../templates/partials");
 const Empresa = require("./models/empresa");
 const Servicio = require("./models/servicio");
+const EmpresaModel = require("./models/empresa");
+const { Console } = require("console");
 
 const app = express();
 app.use(express.json());
@@ -37,6 +39,11 @@ app.get("/", async (req, res) => {
 
 app.get("/empresas", async (req, res) => {
   try {
+    if ('search' in req.query && typeof req.query.search === 'string') {
+      await getEmpresasDeNombre(req, res);
+      return;
+    }
+
     if ('servicio' in req.query && typeof req.query.servicio === 'string') {
       await getEmpresasDeServicio(req, res);
       return;
@@ -55,6 +62,25 @@ app.get("/empresas", async (req, res) => {
     res.send(`ERROR: ${error}`);
   }
 });
+
+const getEmpresasDeNombre = async (req, res) => {
+  const empresas = await Empresa.find({ nombre: req.query.search })
+  if (empresas === undefined) {
+    res.status(400).send(`ERROR: no se encontraron empresas con nombre '${req.query.search}'.`);
+    return;
+  }
+
+  console.info(empresas)
+
+  var servicios = Servicio.find();
+  servicios.sort(function(a, b) {
+    var servicioA = a.nombre.toUpperCase();
+    var servicioB = b.nombre.toUpperCase();
+    return (servicioA < servicioB) ? -1 : (servicioA > servicioB) ? 1 : 0;
+  });
+
+  res.render("empresas-de-nombre", { empresas, nombre:req.query.search, servicios });
+}
 
 const getEmpresasDeServicio = async (req, res) => {
   const empresas = await Empresa.find({ servicios: req.query.servicio });
