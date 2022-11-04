@@ -10,10 +10,13 @@
         <link rel="stylesheet" href="/style.css"> 
 
         <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        {{> headerHead }}
     </head>
 <body class="empresa-body">
+    {{> header }}
+
     {{#with empresa}}
-        {{>header}}
         <div class="container">
             <h2 class="mb-4 mt-3 text-center">{{nombre}}</h2>
             <div class="row gx-5 mb-4">

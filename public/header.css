@@ -1,10 +1,4 @@
-div.scrollmenu { 
-    background-color: #07071c; 
-    overflow: auto; 
-    white-space: nowrap; 
-} 
-
-div.scrollmenu a { 
+.header a { 
     display: inline-block; 
     color: #ce5c35;
     text-align: center; 
@@ -13,6 +7,6 @@ div.scrollmenu a {
     font-family: Arial, Helvetica, sans-serif; 
 } 
 
-div.scrollmenu a:hover { 
+.header a:hover { 
     background-color: #777; 
 }

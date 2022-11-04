@@ -10,12 +10,13 @@
         <link rel="stylesheet" href="/style.css"> 
 
         <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        {{> headerHead }}
     </head>
 <body class="empresa-body">
-    <div class="content" id="inicio"></div>
-    {{>header}}
+    {{> header }}
     
-    <h1 >Servicios</h1>
+    <h1>Servicios</h1>
 
     <div>
         {{#each servicios}}
@@ -32,7 +33,6 @@
             <br/>
         </div>
         {{/each}}
- 
     </div>
 </body>
 </html>
