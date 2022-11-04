@@ -133,7 +133,7 @@ app.listen(port, () => {
 // Para probar la vista de detalle de empresa (empresa.hbs)
 app.get("/empresa/:nombre", async (req, res) => {
   try {
-    const empresa = await Empresa.find({ nombre: req.params.nombre });
+    const empresa = await Empresa.find({ detalle: req.params.nombre });
 
     if (empresa === undefined) {
       res.status(500).send('ERROR: no se encontró la empresa.');
