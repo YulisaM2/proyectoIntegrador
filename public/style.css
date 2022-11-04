@@ -19,3 +19,7 @@ body {
 .card-body {
     background-color: #ce5c35;
 }
+
+h1, h2 {
+    font-family: Arial, Helvetica, sans-serif
+}

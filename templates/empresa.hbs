@@ -17,9 +17,8 @@
         <div class="container">
             <h2 class="mb-4 mt-3 text-center">{{nombre}}</h2>
             <div class="row gx-5 mb-4">
-                <div class="col-sm-5" style="display: flex; align-items: center">
-                    <!--<img src={{logo}} class="img-fluid">-->
-                    <img src="https://i.natgeofe.com/n/548467d8-c5f1-4551-9f58-6817a8d2c45e/NationalGeographic_2572187_3x2.jpg" class="img-fluid">
+                <div class="col-sm-5 text-center">
+                    <img src="{{logo}}" class="img-fluid" style="height: 350px">
                 </div>
                 <div class="col-sm-7">
                     <div class="row mt-3 mb-3">
@@ -86,11 +85,11 @@
                 </div>
             <h2 class="mt-5 mb-4 text-center">Locales</h2>
                 <div class="row">
-                    {{#with localSede as | ls |}}
+                    {{#with localMatriz as | lm |}}
                     <div class="col-sm-4 mb-4">
                         <div class="card">
                             <div class="card-body">
-                                <h5 class="card-title">{{ls.nombre}}</h5>
+                                <h5 class="card-title">{{lm.nombre}}</h5>
                                 <hr />
                                 <div class="container">
                                     <div class="row mb-2" style="display: flex; align-items: center">
@@ -98,7 +97,7 @@
                                             <i class="bi-envelope-fill"></i>
                                         </div>
                                         <div class="col">
-                                        {{ls.email}}
+                                        {{lm.email}}
                                         </div>
                                     </div>
                                     <div class="row mb-2" style="display: flex; align-items: center">
@@ -106,7 +105,7 @@
                                             <i class="bi-telephone-fill"></i>
                                         </div>
                                         <div class="col">
-                                        {{ls.telefono}}
+                                        {{lm.telefono}}
                                         </div>
                                     </div>
                                     <div class="row mb-2" style="display: flex; align-items: center">
@@ -114,7 +113,7 @@
                                             <i class="bi-clock-fill"></i>
                                         </div>
                                         <div class="col">
-                                        <span>De {{ls.horarioDeApertura}} a {{ls.horarioDeCierre}}</span>
+                                        <span>De {{lm.horarioDeApertura}} a {{lm.horarioDeCierre}}</span>
                                         </div>
                                     </div>
                                     <div class="row mb-1" style="display: flex; align-items: center">
@@ -122,7 +121,7 @@
                                             <i class="bi-pin-map-fill"></i>
                                         </div>
                                         <div class="col">
-                                        {{ls.direccion}}
+                                        {{lm.direccion}}
                                         </div>
                                     </div>                                                                                                                        
                                 </div>

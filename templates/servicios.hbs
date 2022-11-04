@@ -1,14 +1,38 @@
 <html>
-<body>
-    <h1>Servicios</h1>
+ <head>
+        <!-- Bootstrap CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+        <!-- Bootstrap Font Icon CSS -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+        <!-- Fuente a usar -->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro">
+
+        <link rel="stylesheet" href="/style.css"> 
+
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+<body class="empresa-body">
+    <div class="content" id="inicio"></div>
+    {{>header}}
+    
+    <h1 >Servicios</h1>
 
     <div>
         {{#each servicios}}
-            <div style="border: 1px solid black; padding: 10px;">
-                <h2>Nombre: {{this.nombre}}</h2>
-                <img src="/img/servicios/{{this.icono}}">
+        <div class="container-sm" >
+            <div class="row" style="border: 1px solid black; padding: 10px;">
+                <div class="column" >
+                    <a href="#inicio">
+                        <img class="img-thumbnail" style="display: block; margin-left: auto; margin-right: auto;"  width="250px" height="250px" src="/img/servicios/{{this.icono}}">
+                    </a>
+                    <br/>      
+                    <h2 style="text-align:center">{{this.nombre}}</h2>
+                </div>
             </div>
+            <br/>
+        </div>
         {{/each}}
+ 
     </div>
 </body>
 </html>
