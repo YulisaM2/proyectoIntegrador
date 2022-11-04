@@ -2,7 +2,7 @@ const path = require("path");
 
 const csv = require("csvtojson");
 
-const EMPRESAS_CSV_PATH = path.join(__dirname, "../../public/Recolección de Datos para Catálogo de Miembros del CSoftMty (New Responses) - Form Responses 2.csv")
+const EMPRESAS_CSV_PATH = path.join(__dirname, "../../public/Datos dummies (formato forms) - Hoja 1.csv")
 
 /**
  * @typedef {object} Local
