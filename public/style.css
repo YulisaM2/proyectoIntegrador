@@ -1,5 +1,6 @@
 body {
     margin: 0;
+    font-family: 'Source Sans Pro'; 
 }
 
 .content {
@@ -8,7 +9,8 @@ body {
 
 .empresa-body {
     font-family: 'Source Sans Pro'; 
-    background-color: #55595c; 
+    /* background-color: #55595c;  */
+    background-color: #0b0f25;
     color: #f9f9fa
 }
 
@@ -20,6 +22,47 @@ body {
     background-color: #ce5c35;
 }
 
-h1, h2 {
-    font-family: Arial, Helvetica, sans-serif
+h1, h2, h3 {
+    font-family: 'Source Sans Pro', Arial, Helvetica, sans-serif; 
+}
+
+.empresa-servicio-titulo {
+    font-weight: normal;
+    font-size: 36px;
+}
+
+.empresa-servicio-list-item {
+    /* border: 1px solid #07071c; */
+    color: #ce5c35;
+    text-decoration: none;
+}
+
+.empresa-servicio-list-item:hover {
+    color: #b93c12;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.empresa-card {
+    background-color: #07071c;
+    border-radius: 10px;
+    height: 350px;
+    max-height: 350px;
+    min-height: 350px;
+}
+
+.empresa-img {
+    max-width: 300px;
+    max-height: 180px;
+}
+
+.btn {
+    background-color: #55595c;
+    color: white;
+}
+
+.btn:hover {
+    background-color: #0b0f25;
+    color: #55595c;
+    border: 1px solid #55595c;
 }

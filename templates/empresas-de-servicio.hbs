@@ -12,25 +12,27 @@
   <link rel="stylesheet" href="/style.css">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  {{> headerHead }}
+
 </head>
 
 <body class="empresa-body">
   {{>header}}
   <div class="container">
-    <h1>Empresas De Servicio "{{ servicio.nombre }}"</h1>
+    <h2 class="my-5">Empresas De Servicio "{{ servicio.nombre }}"</h2>
 
     <div class="row">
       <div class="col-12 col-md-3">
-        <h2 class="text-center">Servicios</h2>
+        <h4 class="text-left">Servicios</h4>
       </div>
       <div class="col-12 col-md-9">
         <div class="input-group mb-3">
           <form action="empresas" action="GET" class="form-inline">
-            <div class="row">
-              <div class="col-lg-8">
-                <input type="text" name="search" class="form-control" placeholder="Buscar" aria-label="Buscar" aria-describedby="button-buscar">
+            <div class="row"  style="--bs-gutter-x: 0.5rem">
+              <div class="col-lg-11">
+                <input type="text" name="search" class="form-control" placeholder="Buscar por nombre..." aria-label="Buscar" aria-describedby="button-buscar">
               </div>
-              <div class="col-lg-4">
+              <div class="col-lg-1">
                  <input type="submit" value="Buscar" class="btn btn-outline-secondary"></input>
               </div>
             </div>
@@ -41,9 +43,9 @@
 
     <div class="row">
       <div class="col-12 col-sm-6 col-md-3 mb-3">
-        <div class="border">
+        <div>
           {{#each servicios}}
-          <a class="d-block border-bottom border-white text-secondary text-decoration-none p-1"
+          <a class="d-block py-1 empresa-servicio-list-item"
             href="/empresas?servicio={{this.nombre}}">{{this.nombre}}</a>
           {{/each}}
         </div>
@@ -52,10 +54,11 @@
       <div class="col-12 col-sm-6 col-md-9">
         <div class="row text-center">
           {{#each empresas}}
-            <div class="col-12 col-md-6">
-              <div class="p-2 border">
-                <img src="{{this.logo}}" class="img-fluid" style="max-height: 300px">
-                <h2>{{this.nombre}}</h2>
+            <div class="col-12 col-md-6 mt-3">
+              <div class="p-5 empresa-card">
+                {{!-- <img src="{{this.logo}}" class="img-fluid" style="max-height: 300px"> --}}
+               <img src="https://e7.pngegg.com/pngimages/118/341/png-clipart-graphics-logo-graphic-design-high-tech-creative-design-technology.png" class="img-fluid empresa-img">
+                <h3 class="mt-4">{{this.nombre}}</h3>
               </div>
             </div>
           {{/each}}
