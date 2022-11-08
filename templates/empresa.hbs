@@ -79,105 +79,112 @@
                     {{#each certificaciones}}
                     <div class="col-sm-2 mb-4">
                         <div class="card">
-                            <img src="https://seeklogo.com/images/C/cmmi-logo-E24F71E23E-seeklogo.com.png" class="img-fluid card-img-top p-3">
                             <div class="card-body">
-                                <h5 class="card-title mt-1 mb-4" style="text-align: center">{{this.nombre}}</h5>
+                                <h3 class="card-title mt-1 mb-4" style="text-align: center">{{this.nombre}}</h5>
+                                <hr />
                                 <div style="text-align: center">{{this.fechaInicio}} <br> - <br> {{this.fechaVencimiento}}</div>
                             </div>
                         </div>
                     </div>
                     {{/each}}
+                    {{#unless certificaciones}}
+                    <h5 style="text-align: center">Esta empresa no tiene certificaciones registradas</h3>
+                    {{/unless}}
                 </div>
             <h2 class="mt-5 mb-4 text-center">Locales</h2>
                 <div class="row">
-                    {{#with localMatriz as | lm |}}
-                    <div class="col-sm-4 mb-4">
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title">{{lm.nombre}}</h5>
-                                <hr />
-                                <div class="container">
-                                    <div class="row mb-2" style="display: flex; align-items: center">
-                                        <div class="col-2">
-                                            <i class="bi-envelope-fill"></i>
+                    {{#if localMatriz.nombre}}
+                        {{#with localMatriz as | lm |}}
+                        <div class="col-sm-4 mb-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{lm.nombre}}</h5>
+                                    <hr />
+                                    <div class="container">
+                                        <div class="row mb-2" style="display: flex; align-items: center">
+                                            <div class="col-2">
+                                                <i class="bi-envelope-fill"></i>
+                                            </div>
+                                            <div class="col">
+                                            {{lm.email}}
+                                            </div>
                                         </div>
-                                        <div class="col">
-                                        {{lm.email}}
+                                        <div class="row mb-2" style="display: flex; align-items: center">
+                                            <div class="col-2">
+                                                <i class="bi-telephone-fill"></i>
+                                            </div>
+                                            <div class="col">
+                                            {{lm.telefono}}
+                                            </div>
                                         </div>
+                                        <div class="row mb-2" style="display: flex; align-items: center">
+                                            <div class="col-2">
+                                                <i class="bi-clock-fill"></i>
+                                            </div>
+                                            <div class="col">
+                                            <span>De {{lm.horarioDeApertura}} a {{lm.horarioDeCierre}}</span>
+                                            </div>
+                                        </div>
+                                        <div class="row mb-1" style="display: flex; align-items: center">
+                                            <div class="col-2">
+                                                <i class="bi-pin-map-fill"></i>
+                                            </div>
+                                            <div class="col">
+                                            {{lm.direccion}}
+                                            </div>
+                                        </div>                                                                                                                        
                                     </div>
-                                    <div class="row mb-2" style="display: flex; align-items: center">
-                                        <div class="col-2">
-                                            <i class="bi-telephone-fill"></i>
-                                        </div>
-                                        <div class="col">
-                                        {{lm.telefono}}
-                                        </div>
-                                    </div>
-                                    <div class="row mb-2" style="display: flex; align-items: center">
-                                        <div class="col-2">
-                                            <i class="bi-clock-fill"></i>
-                                        </div>
-                                        <div class="col">
-                                        <span>De {{lm.horarioDeApertura}} a {{lm.horarioDeCierre}}</span>
-                                        </div>
-                                    </div>
-                                    <div class="row mb-1" style="display: flex; align-items: center">
-                                        <div class="col-2">
-                                            <i class="bi-pin-map-fill"></i>
-                                        </div>
-                                        <div class="col">
-                                        {{lm.direccion}}
-                                        </div>
-                                    </div>                                                                                                                        
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    {{/with}}
-                    {{#each locales}}
-                    <div class="col-sm-4 mb-4">
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title">{{this.nombre}}</h5>
-                                <hr />
-                                <div class="container">
-                                    <div class="row mb-2" style="display: flex; align-items: center">
-                                        <div class="col-2">
-                                            <i class="bi-envelope-fill"></i>
+                        {{/with}}
+                        {{#each locales}}
+                        <div class="col-sm-4 mb-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{this.nombre}}</h5>
+                                    <hr />
+                                    <div class="container">
+                                        <div class="row mb-2" style="display: flex; align-items: center">
+                                            <div class="col-2">
+                                                <i class="bi-envelope-fill"></i>
+                                            </div>
+                                            <div class="col">
+                                            {{this.email}}
+                                            </div>
                                         </div>
-                                        <div class="col">
-                                        {{this.email}}
+                                        <div class="row mb-2" style="display: flex; align-items: center">
+                                            <div class="col-2">
+                                                <i class="bi-telephone-fill"></i>
+                                            </div>
+                                            <div class="col">
+                                            {{this.telefono}}
+                                            </div>
                                         </div>
+                                        <div class="row mb-2" style="display: flex; align-items: center">
+                                            <div class="col-2">
+                                                <i class="bi-clock-fill"></i>
+                                            </div>
+                                            <div class="col">
+                                            <span>De {{this.horarioDeApertura}} a {{this.horarioDeCierre}}</span>
+                                            </div>
+                                        </div>
+                                        <div class="row mb-1" style="display: flex; align-items: center">
+                                            <div class="col-2">
+                                                <i class="bi-pin-map-fill"></i>
+                                            </div>
+                                            <div class="col">
+                                            {{this.direccion}}
+                                            </div>
+                                        </div>                                                                                                                        
                                     </div>
-                                    <div class="row mb-2" style="display: flex; align-items: center">
-                                        <div class="col-2">
-                                            <i class="bi-telephone-fill"></i>
-                                        </div>
-                                        <div class="col">
-                                        {{this.telefono}}
-                                        </div>
-                                    </div>
-                                    <div class="row mb-2" style="display: flex; align-items: center">
-                                        <div class="col-2">
-                                            <i class="bi-clock-fill"></i>
-                                        </div>
-                                        <div class="col">
-                                        <span>De {{this.horarioDeApertura}} a {{this.horarioDeCierre}}</span>
-                                        </div>
-                                    </div>
-                                    <div class="row mb-1" style="display: flex; align-items: center">
-                                        <div class="col-2">
-                                            <i class="bi-pin-map-fill"></i>
-                                        </div>
-                                        <div class="col">
-                                        {{this.direccion}}
-                                        </div>
-                                    </div>                                                                                                                        
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    {{/each}}
+                        {{/each}}
+                    {{else}}
+                        <h5 style="text-align: center">Esta empresa no tiene locales registrados</h3>
+                    {{/if}}
                 </div>
         </div>
     {{/with}}
