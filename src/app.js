@@ -31,7 +31,13 @@ hbs.registerHelper("isNotNull", (arg1) => {
 
 app.get("/", async (_req, res) => {
   try {
-    const servicios = Servicio.find();
+    // const servicios = Servicio.find();
+    var servicios = Servicio.find();
+    servicios.sort(function (a, b) {
+      var servicioA = a.nombre.toUpperCase();
+      var servicioB = b.nombre.toUpperCase();
+      return (servicioA < servicioB) ? -1 : (servicioA > servicioB) ? 1 : 0;
+    });
 
     if (servicios === undefined) {
       res.status(404).render("pagina_error", {
