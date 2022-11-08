@@ -39,7 +39,10 @@ app.get("/", async (_req, res) => {
     res.render("servicios", { servicios, activePage: "Servicios" });
   } catch (error) {
     console.log(error);
-    res.send(`ERROR: ${error}`);
+    res.status(500).render("pagina_error", {
+      codigo: "500",
+      error
+    });
   }
 });
 
@@ -68,7 +71,10 @@ app.get("/empresas", async (req, res) => {
     res.render("empresas", { empresas });
   } catch (error) {
     console.log(error);
-    res.send(`ERROR: ${error}`);
+    res.status(500).render("pagina_error", {
+      codigo: "500",
+      error,
+    });
   }
 });
 
@@ -146,7 +152,10 @@ app.get("/empresa/:nombre", async (req, res) => {
     res.render("empresa", { empresa });
   } catch (error) {
     console.log(error);
-    res.send(`ERROR: ${error}`);
+    res.status(500).render("pagina_error", {
+      codigo: "500",
+      error,
+    });
   }
 });
 
