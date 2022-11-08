@@ -52,6 +52,9 @@
 
       <div class="col-12 col-sm-6 col-md-9">
         <div class="row text-center">
+          {{#if (isNotNull pageError)}}
+             <h2>{{pageError}}</h2>
+          {{/if}}
           {{#each empresas}}
             <div class="col-12 col-md-6 mt-3">
               <div class="p-5 empresa-card">

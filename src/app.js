@@ -20,8 +20,13 @@ app.set("views", templatePath);
 
 app.use(express.static(publicPath));
 hbs.registerPartials(partialsPath);
+
 hbs.registerHelper('isEqualString', (arg1, arg2) => {
   return arg1 === arg2
+});
+
+hbs.registerHelper("isNotNull", (arg1) => {
+  return arg1 !== null;
 });
 
 app.get("/", async (_req, res) => {
@@ -80,13 +85,6 @@ app.get("/empresas", async (req, res) => {
 
 const getEmpresasDeNombre = async (req, res) => {
   const empresas = await Empresa.find({ nombre: req.query.search })
-  if (empresas === undefined) {
-    res.status(404).render("pagina_error", {
-      codigo: "404",
-      error: `No se encontraron empresas con nombre '${req.query.search}'.`,
-    });
-    return;
-  }
 
   var servicios = Servicio.find();
   servicios.sort(function(a, b) {
@@ -95,7 +93,21 @@ const getEmpresasDeNombre = async (req, res) => {
     return (servicioA < servicioB) ? -1 : (servicioA > servicioB) ? 1 : 0;
   });
 
-  res.render("empresas-de-nombre", { empresas, nombre:req.query.search, servicios });
+  if (empresas === undefined) {
+      res.render("empresas-de-nombre", {
+        pageError: `No hay empresas con el nombre: ${req.query.search}`,
+        empresas: [],
+        nombre: req.query.search,
+        servicios,
+      });
+      return;
+  }
+
+  res.render("empresas-de-nombre", {
+    empresas,
+    nombre: req.query.search,
+    servicios,
+  });
 }
 
 const getEmpresasDeServicio = async (req, res) => {
@@ -119,7 +131,8 @@ const getEmpresasDeServicio = async (req, res) => {
 
   if (empresas === undefined) {
     res.render("empresas-de-servicio", {
-      empresas: [{nombre: 'No existen empresas con este servicio'}],
+      pageError: `No hay empresas con este servicio`,
+      empresas: [],
       servicio: { nombre: req.query.servicio },
       servicios,
     });
