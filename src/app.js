@@ -35,12 +35,12 @@ app.get("/", async (_req, res) => {
 
     if (servicios === undefined) {
       res.status(404).render("pagina_error", {
-      codigo: "404",
-      error: `No se encontraron servicios'.`,
-    });
+        codigo: "404",
+        error: `No se encontraron servicios'.`,
+      });
       return;
     }
-    
+
     res.render("servicios", { servicios, activePage: "Servicios" });
   } catch (error) {
     console.log(error);
@@ -53,17 +53,7 @@ app.get("/", async (_req, res) => {
 
 app.get("/empresas", async (req, res) => {
   try {
-    if ('search' in req.query && typeof req.query.search === 'string') {
-      await getEmpresasDeNombre(req, res);
-      return;
-    }
-
-    if ('servicio' in req.query && typeof req.query.servicio === 'string') {
-      await getEmpresasDeServicio(req, res);
-      return;
-    }
-
-    const empresas = await Empresa.find();
+    let empresas = await Empresa.find();
 
     if (empresas === undefined) {
       res.status(404).render("pagina_error", {
@@ -73,7 +63,39 @@ app.get("/empresas", async (req, res) => {
       return;
     }
 
-    res.render("empresas", { empresas });
+    if ('servicio' in req.query && typeof req.query.servicio === 'string' && req.query.servicio.length !== 0) {
+      empresas = empresas.filter(e => e.servicios.includes(req.query.servicio))
+    }
+
+    if ('search' in req.query && typeof req.query.search === 'string') {
+      const regex = new RegExp(req.query.search, 'gi');
+      empresas = empresas.filter(e => regex.test(e.nombre));
+    }
+
+    var servicios = Servicio.find();
+    servicios.sort(function (a, b) {
+      var servicioA = a.nombre.toUpperCase();
+      var servicioB = b.nombre.toUpperCase();
+      return (servicioA < servicioB) ? -1 : (servicioA > servicioB) ? 1 : 0;
+    });
+
+    if (empresas.length === 0) {
+      res.render("empresas-de-servicio", {
+        pageError: `No se encontraron empresas.`,
+        empresas: [],
+        servicio: { nombre: req.query.servicio },
+        search: req.query.search,
+        servicios,
+      });
+      return;
+    }
+
+    res.render("empresas-de-servicio", {
+      empresas,
+      servicio: { nombre: req.query.servicio },
+      search: req.query.search,
+      servicios,
+    });
   } catch (error) {
     console.log(error);
     res.status(500).render("pagina_error", {
@@ -82,67 +104,6 @@ app.get("/empresas", async (req, res) => {
     });
   }
 });
-
-const getEmpresasDeNombre = async (req, res) => {
-  const empresas = await Empresa.find({ nombre: req.query.search })
-
-  var servicios = Servicio.find();
-  servicios.sort(function(a, b) {
-    var servicioA = a.nombre.toUpperCase();
-    var servicioB = b.nombre.toUpperCase();
-    return (servicioA < servicioB) ? -1 : (servicioA > servicioB) ? 1 : 0;
-  });
-
-  if (empresas === undefined) {
-      res.render("empresas-de-nombre", {
-        pageError: `No hay empresas con el nombre: ${req.query.search}`,
-        empresas: [],
-        nombre: req.query.search,
-        servicios,
-      });
-      return;
-  }
-
-  res.render("empresas-de-nombre", {
-    empresas,
-    nombre: req.query.search,
-    servicios,
-  });
-}
-
-const getEmpresasDeServicio = async (req, res) => {
-  const empresas = await Empresa.find({ servicios: req.query.servicio });
-  const servicio = Servicio.find({ nombre: req.query.servicio });
-
-  if (servicio === undefined) {
-    res.status(404).render("pagina_error", {
-      codigo: "404",
-      error: `No se encontraron servicios con nombre '${req.query.servicio}'.`,
-    });
-    return;
-  }
-
-  var servicios = Servicio.find();
-  servicios.sort(function (a, b) {
-    var servicioA = a.nombre.toUpperCase();
-    var servicioB = b.nombre.toUpperCase();
-    return servicioA < servicioB ? -1 : servicioA > servicioB ? 1 : 0;
-  });
-
-  if (empresas === undefined) {
-    res.render("empresas-de-servicio", {
-      pageError: `No hay empresas con este servicio`,
-      empresas: [],
-      servicio: { nombre: req.query.servicio },
-      servicios,
-    });
-    return;
-  }
-
-  console.log(servicios)
-
-  res.render('empresas-de-servicio', { empresas, servicio, servicios});
-}
 
 app.listen(port, () => {
   console.log("Server is up on 3000");
@@ -174,7 +135,7 @@ app.get("/empresa/:nombre", async (req, res) => {
 
 app.get("*", async (req, res) => {
   res.status(404).render("pagina_error", {
-      codigo: "404",
-      error: `No encontramos la página: ${req.path}`,
+    codigo: "404",
+    error: `No encontramos la página: ${req.path}`,
   });
 });

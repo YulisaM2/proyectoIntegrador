@@ -19,7 +19,11 @@
 <body class="empresa-body">
   {{>header}}
   <div class="container">
+    {{#if (isEqualString servicio.nombre undefined)}}
+    <h2 class="my-5">Empresas</h2>
+    {{else}}
     <h2 class="my-5">Empresas De Servicio "{{ servicio.nombre }}"</h2>
+    {{/if}}
     <div class="row" style="margin-top:20px">
       <div class="col-12 col-md-3">
         <h4 class="text-left">Servicios</h4>
@@ -29,7 +33,11 @@
           <form action="empresas" action="GET" class="form-inline">
             <div class="row"  style="--bs-gutter-x: 0.5rem">
               <div class="col-lg-11">
-                <input type="text" name="search" class="form-control" placeholder="Buscar por nombre..." aria-label="Buscar" aria-describedby="button-buscar">
+                {{#if (isEqualString servicio.nombre undefined)}}
+                {{else}}
+                  <input type="hidden" name="servicio" value="{{ servicio.nombre }}">
+                {{/if}}
+                <input type="text" name="search" class="form-control" placeholder="Buscar por nombre..." aria-label="Buscar" aria-describedby="button-buscar" value="{{ search }}">
               </div>
               <div class="col-lg-1">
                  <input type="submit" value="Buscar" class="btn btn-outline-secondary"></input>
