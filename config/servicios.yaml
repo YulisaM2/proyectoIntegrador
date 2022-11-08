@@ -1,55 +1,55 @@
 servicios:
 - nombre: Desarrollo de Software
-  icono : software-development-icon.svg
+  icono : fas fa-code
 - nombre: Desarrollo Web
-  icono : web-page-icon.svg
+  icono : fas fa-desktop
 - nombre: Soluciones Tecnológicas
-  icono : creative-idea-solution-icon.svg
+  icono : fas fa-code-branch
 - nombre: Healthtech
-  icono : health-and-safety-icon.svg
+  icono : fas fa-laptop-medical
 - nombre: Fintech
-  icono : fintech-icon.svg
+  icono : fas fa-hand-holding-usd
 - nombre: E-commerce
-  icono : e-commerce-shopping-website-icon.svg
+  icono : fas fa-shopping-basket
 - nombre: Desarrollo a la medida
-  icono : setting-computer-desktop-icon.svg
+  icono : fas fa-pencil-ruler
 - nombre: Facturación electrónica
-  icono : checkmark-invoice-icon.svg
+  icono : fas fa-file-invoice-dollar
 - nombre: Staffing
-  icono : corporate-icon.svg
+  icono : fas fa-user-check
 - nombre: Software as a Service
-  icono : saas-icon.svg
+  icono : fas fa-laptop-code
 - nombre: Monitoreo de SW & HW
-  icono : monitoring-system-icon.svg
+  icono : fas fa-chart-bar
 - nombre: Consultoría TIC
-  icono : comments-icon.svg
+  icono : fas fa-users-cog
 - nombre: Asesoría en propiedad intelectual en temas de tecnología
-  icono : copyright-content-icon.svg
+  icono : far fa-newspaper
 - nombre: Tratamiento de imagen
-  icono : add-image-photo-icon.svg
+  icono : far fa-check-square
 - nombre: Servicios de telecomunicaciones
-  icono : base-station-icon.svg
+  icono : fas fa-network-wired
 - nombre: Uso de PLC
-  icono : tools-icon.svg
+  icono : fas fa-tools
 - nombre: Redes industriales
-  icono : share-square-line-icon.svg
+  icono : fas fa-share-alt
 - nombre: Realidad aumentada
-  icono : virtual-world-icon.svg
+  icono : far fa-eye
 - nombre: 3D Printing
-  icono : 3d-printing-icon.svg
+  icono : fas fa-print
 - nombre: Business Intelligence
-  icono : business-man-investor-dollar-icon.svg
+  icono : fas fa-funnel-dollar
 - nombre: Big data y Analítica de datos
-  icono : data-sheet-icon.svg
+  icono : fas fa-chart-pie
 - nombre: Inteligencia artificial
-  icono : artificial-intelligence-ai-icon.svg
+  icono : fas fa-project-diagram
 - nombre: Robótica
-  icono : mechanical-arm-icon.svg
+  icono : fas fa-robot
 - nombre: IoT
-  icono : smart-city-icon.svg
+  icono : fas fa-globe
 - nombre: Ciberseguridad
-  icono : encrypted-icon.svg
+  icono : fas fa-lock
 - nombre: Blockchain
-  icono : blockchain-development-icon.svg
+  icono : fas fa-sitemap
 - nombre: Nube
-  icono : cloud-backup-icon.svg
+  icono : fas fa-cloud

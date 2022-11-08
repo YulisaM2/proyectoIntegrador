@@ -9,6 +9,7 @@
 
         <link rel="stylesheet" href="/style.css"> 
 
+        <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         {{> headerHead }}
@@ -18,21 +19,22 @@
     
     <h1>Servicios</h1>
 
-    <div>
-        {{#each servicios}}
-        <div class="container-sm" >
+   <div class="container-sm" >
             <div class="row" style="border: 1px solid black; padding: 10px;">
-                <div class="column" >
+                {{#each servicios}}
+                <div class="col-4" >
                     <a href="#inicio">
-                        <img class="img-thumbnail" style="display: block; margin-left: auto; margin-right: auto;"  width="250px" height="250px" src="/img/servicios/{{this.icono}}">
+                        <div style="text-align:center">
+                            <i class="{{this.icono}}" aria-hidden="true" style='font-size:150px;color:ce5c35;'></i>
+                        </div>
                     </a>
                     <br/>      
                     <h2 style="text-align:center">{{this.nombre}}</h2>
                 </div>
+                {{/each}}
             </div>
             <br/>
         </div>
-        {{/each}}
     </div>
 </body>
 </html>
