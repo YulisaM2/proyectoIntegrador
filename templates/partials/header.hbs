@@ -8,11 +8,18 @@
       </div>
       <div class="p-3 w-100">
         <ul class="d-flex justify-content-end list-unstyled m-0">
-          <li class="d-block position-relative me-5">
+          <li class="d-block position-relative me-1">
             {{#if (isEqualString activePage "Servicios")}}
               <a class="header-link-active p-2 text-white d-inline-block text-decoration-none" href="/" style="font-family: Roboto; font-weight: 300;">Servicios</a>
             {{else}}
               <a class="header-link p-2 text-white d-inline-block text-decoration-none" href="/" style="font-family: Roboto; font-weight: 300;">Servicios</a>
+            {{/if}}
+          </li>
+          <li class="d-block position-relative me-5">
+            {{#if (isEqualString activePage "Empresas")}}
+              <a class="header-link-active p-2 text-white d-inline-block text-decoration-none" href="/empresas" style="font-family: Roboto; font-weight: 300;">Empresas</a>
+            {{else}}
+              <a class="header-link p-2 text-white d-inline-block text-decoration-none" href="/empresas" style="font-family: Roboto; font-weight: 300;">Empresas</a>
             {{/if}}
           </li>
           <li class="d-block position-relative">

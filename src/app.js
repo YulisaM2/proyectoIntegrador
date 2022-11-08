@@ -86,6 +86,7 @@ app.get("/empresas", async (req, res) => {
         servicio: { nombre: req.query.servicio },
         search: req.query.search,
         servicios,
+        activePage: "Empresas",
       });
       return;
     }
@@ -95,6 +96,7 @@ app.get("/empresas", async (req, res) => {
       servicio: { nombre: req.query.servicio },
       search: req.query.search,
       servicios,
+      activePage: "Empresas",
     });
   } catch (error) {
     console.log(error);
