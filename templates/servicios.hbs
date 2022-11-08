@@ -22,14 +22,14 @@
             <div class="row" style="--bs-gutter-x: 2rem; --bs-gutter-y: 2rem;">
                 {{#each servicios}}
                 <div class="col-4">
-                    <div class="servicio-card">
-                        <a href="/empresas?servicio={{this.nombre}}">
-                            <div style="text-align:center">
-                                <i class="{{this.icono}} servicio-img pt-5" aria-hidden="true"></i>
-                            </div>
-                        </a>     
-                        <h4 style="text-align:center; padding: 20px 35px;">{{this.nombre}}</h4>
-                    </div>
+                    <a href="/empresas?servicio={{this.nombre}}" style="text-decoration: none; color: #f9f9fa">
+                        <div class="servicio-card">
+                                <div style="text-align:center">
+                                    <i class="{{this.icono}} servicio-img pt-5" aria-hidden="true"></i>
+                                </div>   
+                            <h4 style="text-align:center; padding: 20px 35px;">{{this.nombre}}</h4>
+                        </div>
+                    </a>  
                 </div>
                 {{/each}}
             </div>
