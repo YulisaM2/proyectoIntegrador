@@ -51,14 +51,15 @@
 
       <div class="col-12 col-sm-6 col-md-9">
         <div class="row text-center">
-          {{#each empresas}}
-            <div class="col-12 col-md-6">
-              <div class="p-2 border">
-                <img src="{{this.logo}}" class="img-fluid" style="max-height: 300px">
-                <h2>{{this.nombre}}</h2>
+            {{#each empresas}}
+              <div class="col-12 col-md-6">
+                <div class="p-2 border">
+                  <img src="{{this.logo}}" class="img-fluid" style="max-height: 300px">
+                  <p>Error</p>
+                  <h2>{{this.nombre}}</h2>
+                </div>
               </div>
-            </div>
-          {{/each}}
+            {{/each}}
         </div>
       </div>
     </div>

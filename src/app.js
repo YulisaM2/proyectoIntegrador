@@ -29,14 +29,20 @@ app.get("/", async (_req, res) => {
     const servicios = Servicio.find();
 
     if (servicios === undefined) {
-      res.status(500).send('ERROR: no se encontraron servicios')
+      res.status(404).render("pagina_error", {
+      codigo: "404",
+      error: `No se encontraron servicios'.`,
+    });
       return;
     }
     
     res.render("servicios", { servicios, activePage: "Servicios" });
   } catch (error) {
     console.log(error);
-    res.send(`ERROR: ${error}`);
+    res.status(500).render("pagina_error", {
+      codigo: "500",
+      error
+    });
   }
 });
 
@@ -55,21 +61,30 @@ app.get("/empresas", async (req, res) => {
     const empresas = await Empresa.find();
 
     if (empresas === undefined) {
-      res.status(500).send('ERROR: no se encontraron empresas.');
+      res.status(404).render("pagina_error", {
+        codigo: "404",
+        error: `No se encontraron empresas.`,
+      });
       return;
     }
 
     res.render("empresas", { empresas });
   } catch (error) {
     console.log(error);
-    res.send(`ERROR: ${error}`);
+    res.status(500).render("pagina_error", {
+      codigo: "500",
+      error,
+    });
   }
 });
 
 const getEmpresasDeNombre = async (req, res) => {
   const empresas = await Empresa.find({ nombre: req.query.search })
   if (empresas === undefined) {
-    res.status(400).send(`ERROR: no se encontraron empresas con nombre '${req.query.search}'.`);
+    res.status(404).render("pagina_error", {
+      codigo: "404",
+      error: `No se encontraron empresas con nombre '${req.query.search}'.`,
+    });
     return;
   }
 
@@ -85,25 +100,31 @@ const getEmpresasDeNombre = async (req, res) => {
 
 const getEmpresasDeServicio = async (req, res) => {
   const empresas = await Empresa.find({ servicios: req.query.servicio });
-
-  if (empresas === undefined) {
-    res.status(400).send(`ERROR: no se encontraron empresas de servicio '${req.query.servicio}'.`);
-    return;
-  }
-
   const servicio = Servicio.find({ nombre: req.query.servicio });
 
   if (servicio === undefined) {
-    res.status(400).send(`ERROR: no se encontraron servicios con nombre '${req.query.servicio}'.`)
+    res.status(404).render("pagina_error", {
+      codigo: "404",
+      error: `No se encontraron servicios con nombre '${req.query.servicio}'.`,
+    });
     return;
   }
 
   var servicios = Servicio.find();
-  servicios.sort(function(a, b) {
+  servicios.sort(function (a, b) {
     var servicioA = a.nombre.toUpperCase();
     var servicioB = b.nombre.toUpperCase();
-    return (servicioA < servicioB) ? -1 : (servicioA > servicioB) ? 1 : 0;
+    return servicioA < servicioB ? -1 : servicioA > servicioB ? 1 : 0;
   });
+
+  if (empresas === undefined) {
+    res.render("empresas-de-servicio", {
+      empresas: [{nombre: 'No existen empresas con este servicio'}],
+      servicio: { nombre: req.query.servicio },
+      servicios,
+    });
+    return;
+  }
 
   console.log(servicios)
 
@@ -121,13 +142,26 @@ app.get("/empresa/:nombre", async (req, res) => {
     const empresa = await Empresa.find({ detalle: req.params.nombre });
 
     if (empresa === undefined) {
-      res.status(500).send('ERROR: no se encontró la empresa.');
+      res.status(404).render("pagina_error", {
+        codigo: "404",
+        error: `No se encontró la empresa: ${req.params.nombre}`,
+      });
       return;
     }
 
     res.render("empresa", { empresa });
   } catch (error) {
     console.log(error);
-    res.send(`ERROR: ${error}`);
+    res.status(500).render("pagina_error", {
+      codigo: "500",
+      error,
+    });
   }
+});
+
+app.get("*", async (req, res) => {
+  res.status(404).render("pagina_error", {
+      codigo: "404",
+      error: `No encontramos la página: ${req.path}`,
+  });
 });
