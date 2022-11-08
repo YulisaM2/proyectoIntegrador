@@ -22,7 +22,7 @@ body {
     background-color: #ce5c35;
 }
 
-h1, h2, h3 {
+h1, h2, h3, h4 {
     font-family: 'Source Sans Pro', Arial, Helvetica, sans-serif; 
 }
 
@@ -54,6 +54,22 @@ h1, h2, h3 {
 .empresa-img {
     max-width: 300px;
     max-height: 180px;
+}
+
+.servicio-card {
+    background-color: #07071c;
+    border-radius: 10px;
+    width: 410px;
+    height: 270px;
+}
+
+.servicio-img {
+    font-size: 100px;
+    color: ce5c35;
+}
+
+.servicio-titulo {
+    margin: 50px 72px;
 }
 
 .btn {
